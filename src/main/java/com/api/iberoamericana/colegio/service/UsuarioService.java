@@ -1,7 +1,9 @@
 package com.api.iberoamericana.colegio.service;
 
+import com.api.iberoamericana.colegio.entity.Rol;
 import com.api.iberoamericana.colegio.entity.Usuario;
 import com.api.iberoamericana.colegio.exception.NotFoundException;
+import com.api.iberoamericana.colegio.repository.RolRepository;
 import com.api.iberoamericana.colegio.repository.UsuarioRepository;
 import com.api.iberoamericana.colegio.service.contract.IUsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import java.util.List;
 public class UsuarioService implements IUsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final RolRepository rolRepository;
 
     @Override
     public List<Usuario> getUsuarios() {
@@ -53,6 +56,12 @@ public class UsuarioService implements IUsuarioService {
         Usuario usuarioDelete = getUsuario(id);
         usuarioRepository.delete(usuarioDelete);
         return "Se elimino el usuario con id " + id;
+    }
+
+    public Rol getRolById(long id){
+        return rolRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(HttpStatus.NOT_FOUND,
+                        "No se encontro el rol con id " + id));
     }
 
 }

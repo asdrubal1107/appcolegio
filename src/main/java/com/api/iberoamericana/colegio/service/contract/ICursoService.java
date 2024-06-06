@@ -1,18 +1,19 @@
 package com.api.iberoamericana.colegio.service.contract;
 
+import com.api.iberoamericana.colegio.controller.response.CursoResponse;
 import com.api.iberoamericana.colegio.entity.Curso;
 
 import java.util.List;
 
 public interface ICursoService {
 
-    List<Curso> getCursos();
+    List<CursoResponse> getCursos();
 
-    Curso getCurso(long id);
+    CursoResponse getCurso(long id);
 
-    Curso createCurso(Curso curso);
+    CursoResponse createCurso(Curso curso);
 
-    Curso updateCurso(Curso curso, long id);
+    CursoResponse updateCurso(Curso curso, long id);
 
     String deleteCurso(long id);
 

@@ -2,6 +2,7 @@ package com.api.iberoamericana.colegio.controller;
 
 import com.api.iberoamericana.colegio.controller.request.UsuarioRequest;
 import com.api.iberoamericana.colegio.entity.Usuario;
+import com.api.iberoamericana.colegio.service.RolService;
 import com.api.iberoamericana.colegio.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +57,7 @@ public class UsuarioController {
                 .direccion(usuarioRequest.getDireccion())
                 .celular(usuarioRequest.getCelular())
                 .correoElectronico(usuarioRequest.getCorreoElectronico())
-                .rol(usuarioRequest.getRol())
+                .rol(usuarioService.getRolById(usuarioRequest.getIdRol()))
                 .build();
     }
 
