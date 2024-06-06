@@ -9,8 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -42,6 +40,6 @@ public class UsuarioRequest {
     private String correoElectronico;
 
     @NotNull
-    private Rol rol;
+    private String idRol;
 
 }
