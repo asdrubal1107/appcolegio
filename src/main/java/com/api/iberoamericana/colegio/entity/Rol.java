@@ -1,5 +1,6 @@
 package com.api.iberoamericana.colegio.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,7 @@ public class Rol {
     private String nombre;
 
     @OneToMany(mappedBy = "rol")
+    @JsonManagedReference
     private List<Usuario> usuarios;
 
 }

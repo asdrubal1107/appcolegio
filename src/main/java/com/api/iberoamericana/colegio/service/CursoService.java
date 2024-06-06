@@ -1,9 +1,11 @@
 package com.api.iberoamericana.colegio.service;
 
 import com.api.iberoamericana.colegio.entity.Curso;
+import com.api.iberoamericana.colegio.exception.NotFoundException;
 import com.api.iberoamericana.colegio.repository.CursoRepository;
 import com.api.iberoamericana.colegio.service.contract.ICursoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +24,9 @@ public class CursoService implements ICursoService {
     @Override
     public Curso getCurso(long id) {
         return cursoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontro el curso con id " + id));
+                .orElseThrow(() ->
+                        new NotFoundException(HttpStatus.NOT_FOUND,
+                                "No se encontro el curso con id " + id));
     }
 
     @Override

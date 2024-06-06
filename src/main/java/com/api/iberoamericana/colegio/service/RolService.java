@@ -1,9 +1,11 @@
 package com.api.iberoamericana.colegio.service;
 
 import com.api.iberoamericana.colegio.entity.Rol;
+import com.api.iberoamericana.colegio.exception.NotFoundException;
 import com.api.iberoamericana.colegio.repository.RolRepository;
 import com.api.iberoamericana.colegio.service.contract.IRolService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +24,9 @@ public class RolService implements IRolService {
     @Override
     public Rol getRol(long id) {
         return rolRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                .orElseThrow(() ->
+                        new NotFoundException(HttpStatus.NOT_FOUND,
+                                "No se encontro el rol con id " + id));
     }
 
     @Override

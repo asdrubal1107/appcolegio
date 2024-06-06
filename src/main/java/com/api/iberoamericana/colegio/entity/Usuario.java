@@ -1,5 +1,7 @@
 package com.api.iberoamericana.colegio.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,19 +44,20 @@ public class Usuario {
     @Column(length = 100)
     private String correoElectronico;
 
-    @Column(nullable = false, columnDefinition = "TINYINT")
+    @Column(nullable = false, columnDefinition = "TINYINT default 1")
     private boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)
+    @JsonBackReference
     private Rol rol;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
     private List<Estudiante> estudiantes;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
     private List<Profesor> profesores;
-
-
 
 }
