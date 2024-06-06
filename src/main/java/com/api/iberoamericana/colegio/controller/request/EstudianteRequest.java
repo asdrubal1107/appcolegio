@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfesorRequest {
+public class EstudianteRequest {
 
     @NotNull
     @Size(min = 1, max = 100)
-    private String materiasFuertes;
+    private String nombreAcudiente;
 
     @Size(max = 100)
-    private String materiasDebiles;
+    private String telefonoAcudiente;
 
     @NotNull
     private String idUsuario;

@@ -1,8 +1,11 @@
 package com.api.iberoamericana.colegio.service;
 
+import com.api.iberoamericana.colegio.controller.response.ProfesorResponse;
 import com.api.iberoamericana.colegio.entity.Profesor;
+import com.api.iberoamericana.colegio.entity.Usuario;
 import com.api.iberoamericana.colegio.exception.NotFoundException;
 import com.api.iberoamericana.colegio.repository.ProfesorRepository;
+import com.api.iberoamericana.colegio.repository.UsuarioRepository;
 import com.api.iberoamericana.colegio.service.contract.IProfesorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,38 +18,65 @@ import java.util.List;
 public class ProfesorService implements IProfesorService {
 
     private final ProfesorRepository profesorRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Override
-    public List<Profesor> getProfesores() {
-        return profesorRepository.findAll();
+    public List<ProfesorResponse> getProfesores() {
+        return profesorRepository.findAll()
+                .stream()
+                .map(this::profesorToProfesorResponse)
+                .toList();
     }
 
     @Override
-    public Profesor getProfesor(long id) {
-        return profesorRepository.findById(id)
-                .orElseThrow(() ->
-                        new NotFoundException(HttpStatus.NOT_FOUND, "No se encontro el profesor con id " + id));
+    public ProfesorResponse getProfesor(long id) {
+        return profesorToProfesorResponse(obtenerProfesorPorId(id));
     }
 
     @Override
-    public Profesor createProfesor(Profesor profesor) {
-        return profesorRepository.save(profesor);
+    public ProfesorResponse createProfesor(Profesor profesor) {
+        return profesorToProfesorResponse(profesorRepository.save(profesor));
     }
 
     @Override
-    public Profesor updateProfesor(Profesor profesor, long id) {
-        Profesor profesorUpdate = getProfesor(id);
+    public ProfesorResponse updateProfesor(Profesor profesor, long id) {
+        Profesor profesorUpdate = obtenerProfesorPorId(id);
         profesorUpdate.setMateriasFuertes(profesor.getMateriasFuertes());
         profesorUpdate.setMateriasDebiles(profesor.getMateriasDebiles());
         profesorUpdate.setUsuario(profesor.getUsuario());
-        return profesorRepository.save(profesorUpdate);
+        return profesorToProfesorResponse(profesorRepository.save(profesorUpdate));
     }
 
     @Override
     public String deleteProfesor(long id) {
-        Profesor profesorDelete = getProfesor(id);
+        Profesor profesorDelete = obtenerProfesorPorId(id);
         profesorRepository.delete(profesorDelete);
         return "Se elimino el profesor con id " + id;
+    }
+
+    @Override
+    public Usuario getUsuarioById(long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(HttpStatus.NOT_FOUND,
+                        "No se encontro el usuario con id " + id));
+    }
+
+    private Profesor obtenerProfesorPorId(long id) {
+        return profesorRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(HttpStatus.NOT_FOUND,
+                                "No se encontro el profesor con id " + id));
+    }
+
+    private ProfesorResponse profesorToProfesorResponse(Profesor profesor){
+        return ProfesorResponse.builder()
+                .id(profesor.getIdProfesor())
+                .nombre(profesor.getUsuario().getNombres())
+                .apellido(profesor.getUsuario().getApellidos())
+                .celular(profesor.getUsuario().getCelular())
+                .correoElectronico(profesor.getUsuario().getCorreoElectronico())
+                .materiasFuertes(profesor.getMateriasFuertes())
+                .materiasDebiles(profesor.getMateriasDebiles())
+                .build();
     }
 
 }

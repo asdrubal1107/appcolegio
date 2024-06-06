@@ -40,6 +40,6 @@ public class UsuarioRequest {
     private String correoElectronico;
 
     @NotNull
-    private Long idRol;
+    private String idRol;
 
 }

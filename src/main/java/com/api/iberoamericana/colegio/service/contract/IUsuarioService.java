@@ -1,19 +1,23 @@
 package com.api.iberoamericana.colegio.service.contract;
 
+import com.api.iberoamericana.colegio.controller.response.UsuarioResponse;
+import com.api.iberoamericana.colegio.entity.Rol;
 import com.api.iberoamericana.colegio.entity.Usuario;
 
 import java.util.List;
 
 public interface IUsuarioService {
 
-    List<Usuario> getUsuarios();
+    List<UsuarioResponse> getUsuarios();
 
-    Usuario getUsuario(long id);
+    UsuarioResponse getUsuario(long id);
 
-    Usuario createUsuario(Usuario usuario);
+    UsuarioResponse createUsuario(Usuario usuario);
 
-    Usuario updateUsuario(Usuario usuario, long id);
+    UsuarioResponse updateUsuario(Usuario usuario, long id);
 
     String deleteUsuario(long id);
+
+    Rol getRolById(long id);
 
 }

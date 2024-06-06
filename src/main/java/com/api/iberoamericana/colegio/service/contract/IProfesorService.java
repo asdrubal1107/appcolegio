@@ -1,19 +1,23 @@
 package com.api.iberoamericana.colegio.service.contract;
 
+import com.api.iberoamericana.colegio.controller.response.ProfesorResponse;
 import com.api.iberoamericana.colegio.entity.Profesor;
+import com.api.iberoamericana.colegio.entity.Usuario;
 
 import java.util.List;
 
 public interface IProfesorService {
 
-    List<Profesor> getProfesores();
+    List<ProfesorResponse> getProfesores();
 
-    Profesor getProfesor(long id);
+    ProfesorResponse getProfesor(long id);
 
-    Profesor createProfesor(Profesor profesor);
+    ProfesorResponse createProfesor(Profesor profesor);
 
-    Profesor updateProfesor(Profesor profesor, long id);
+    ProfesorResponse updateProfesor(Profesor profesor, long id);
 
     String deleteProfesor(long id);
+
+    Usuario getUsuarioById(long id);
 
 }

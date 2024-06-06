@@ -44,8 +44,8 @@ public class Usuario {
     @Column(length = 100)
     private String correoElectronico;
 
-    @Column(nullable = false, columnDefinition = "TINYINT default 1")
-    private boolean estado;
+    @Column(nullable = false, columnDefinition = "TINYINT")
+    private Boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)
