@@ -1,18 +1,19 @@
 package com.api.iberoamericana.colegio.service.contract;
 
+import com.api.iberoamericana.colegio.controller.response.RolResponse;
 import com.api.iberoamericana.colegio.entity.Rol;
 
 import java.util.List;
 
 public interface IRolService {
 
-    List<Rol> getRoles();
+    List<RolResponse> getRoles();
 
-    Rol getRol(long id);
+    RolResponse getRol(long id);
 
-    Rol createRol(Rol curso);
+    RolResponse createRol(Rol curso);
 
-    Rol updateRol(Rol curso, long id);
+    RolResponse updateRol(Rol curso, long id);
 
     String deleteRol(long id);
 

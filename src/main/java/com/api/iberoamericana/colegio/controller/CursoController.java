@@ -1,10 +1,13 @@
 package com.api.iberoamericana.colegio.controller;
 
 import com.api.iberoamericana.colegio.controller.request.CursoRequest;
+import com.api.iberoamericana.colegio.controller.response.CursoResponse;
 import com.api.iberoamericana.colegio.entity.Curso;
 import com.api.iberoamericana.colegio.service.CursoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +20,33 @@ public class CursoController {
     private final CursoService cursoService;
 
     @GetMapping
-    public List<Curso> getAll() {
-        return cursoService.getCursos();
+    public ResponseEntity<List<CursoResponse>> getAll() {
+        return new ResponseEntity<>(cursoService.getCursos(),
+                HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Curso getById(@PathVariable String id) {
-        return cursoService.getCurso(Long.parseLong(id));
+    public ResponseEntity<CursoResponse> getById(@PathVariable String id) {
+        return new ResponseEntity<>(cursoService.getCurso(Long.parseLong(id)),
+                HttpStatus.OK);
     }
 
     @PostMapping()
-    public Curso create(@Valid @RequestBody CursoRequest curso) {
-        return cursoService.createCurso(cursoRequestToCurso(curso));
+    public ResponseEntity<CursoResponse> create(@Valid @RequestBody CursoRequest curso) {
+        return new ResponseEntity<>(cursoService.createCurso(cursoRequestToCurso(curso)),
+                HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public Curso update(@Valid @RequestBody CursoRequest curso, @PathVariable String id) {
-        return cursoService.updateCurso(cursoRequestToCurso(curso), Long.parseLong(id));
+    public ResponseEntity<CursoResponse> update(@Valid @RequestBody CursoRequest curso, @PathVariable String id) {
+        return new ResponseEntity<>(cursoService.updateCurso(cursoRequestToCurso(curso), Long.parseLong(id)),
+                HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable String id) {
-        return cursoService.deleteCurso(Long.parseLong(id));
+    public ResponseEntity<String> delete(@PathVariable String id) {
+        return new ResponseEntity<>(cursoService.deleteCurso(Long.parseLong(id)),
+                HttpStatus.OK);
     }
 
     private Curso cursoRequestToCurso(CursoRequest cursoRequest) {

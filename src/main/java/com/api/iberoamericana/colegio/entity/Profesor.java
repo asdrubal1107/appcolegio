@@ -28,7 +28,7 @@ public class Profesor {
     private String materiasDebiles;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @JoinColumn(name = "id_usuario", nullable = false, unique = true)
     @JsonBackReference
     private Usuario usuario;
 
