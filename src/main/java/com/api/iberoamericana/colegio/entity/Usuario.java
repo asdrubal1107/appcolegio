@@ -33,7 +33,7 @@ public class Usuario {
     private String apellidos;
 
     @Column
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
 
     @Column(length = 100)
     private String direccion;

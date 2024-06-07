@@ -1,5 +1,7 @@
 package com.api.iberoamericana.colegio.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,24 +25,28 @@ public class CursosAsignados {
     private Long idCursoAsignado;
 
     @Column(nullable = false)
-    private Date fechaAsignacion;
+    private String fechaAsignacion;
 
-    @Column(precision = 3, scale = 2)
-    private BigDecimal promedio;
+    @Column
+    private Double promedio;
 
     @ManyToOne
     @JoinColumn(name = "id_estudiante", nullable = false)
+    @JsonBackReference
     private Estudiante estudiante;
 
     @ManyToOne
     @JoinColumn(name = "id_profesor", nullable = false)
+    @JsonBackReference
     private Profesor profesor;
 
     @ManyToOne
     @JoinColumn(name = "id_curso", nullable = false)
+    @JsonBackReference
     private Curso curso;
 
     @OneToMany(mappedBy = "cursoAsignado", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Nota> notas;
 
 }

@@ -13,7 +13,7 @@ public class UsuarioResponse {
     private String documento;
     private String nombres;
     private String apellidos;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String direccion;
     private String celular;
     private String correoElectronico;
