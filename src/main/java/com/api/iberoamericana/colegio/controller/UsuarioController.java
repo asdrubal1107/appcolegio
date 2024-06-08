@@ -51,11 +51,8 @@ public class UsuarioController {
         return Usuario.builder()
                 .documento(usuarioRequest.getDocumento())
                 .nombres(usuarioRequest.getNombres())
-                .apellidos(usuarioRequest.getApellidos())
-                .fechaNacimiento(usuarioRequest.getFechaNacimiento())
-                .direccion(usuarioRequest.getDireccion())
-                .celular(usuarioRequest.getCelular())
                 .correoElectronico(usuarioRequest.getCorreoElectronico())
+                .password(usuarioRequest.getPassword())
                 .rol(usuarioService.getRolById(Long.parseLong(usuarioRequest.getIdRol())))
                 .build();
     }

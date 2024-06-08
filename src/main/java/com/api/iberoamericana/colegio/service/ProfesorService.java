@@ -41,8 +41,6 @@ public class ProfesorService implements IProfesorService {
     @Override
     public ProfesorResponse updateProfesor(Profesor profesor, long id) {
         Profesor profesorUpdate = obtenerProfesorPorId(id);
-        profesorUpdate.setMateriasFuertes(profesor.getMateriasFuertes());
-        profesorUpdate.setMateriasDebiles(profesor.getMateriasDebiles());
         profesorUpdate.setUsuario(profesor.getUsuario());
         return profesorToProfesorResponse(profesorRepository.save(profesorUpdate));
     }
@@ -71,11 +69,7 @@ public class ProfesorService implements IProfesorService {
         return ProfesorResponse.builder()
                 .id(profesor.getIdProfesor())
                 .nombre(profesor.getUsuario().getNombres())
-                .apellido(profesor.getUsuario().getApellidos())
-                .celular(profesor.getUsuario().getCelular())
                 .correoElectronico(profesor.getUsuario().getCorreoElectronico())
-                .materiasFuertes(profesor.getMateriasFuertes())
-                .materiasDebiles(profesor.getMateriasDebiles())
                 .build();
     }
 

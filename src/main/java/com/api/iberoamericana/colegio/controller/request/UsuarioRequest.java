@@ -23,21 +23,14 @@ public class UsuarioRequest {
     @Size(min = 1, max = 50)
     private String nombres;
 
+    @Size(max = 100)
     @NotNull
-    @Size(min = 1, max = 50)
-    private String apellidos;
-
-    private String fechaNacimiento;
-
-    @Size(max = 100)
-    private String direccion;
-
-    @Size(max = 50)
-    private String celular;
-
-    @Size(max = 100)
     @Email
     private String correoElectronico;
+
+    @NotNull
+    @Size(max = 50)
+    private String password;
 
     @NotNull
     private String idRol;
