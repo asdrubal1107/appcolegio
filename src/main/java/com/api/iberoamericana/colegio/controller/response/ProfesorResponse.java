@@ -8,7 +8,7 @@ import lombok.Data;
 public class ProfesorResponse {
 
     private Long id;
-    private String nombre;
+    private String nombres;
     private String documento;
     private String correoElectronico;
     private String rol;
