@@ -9,6 +9,7 @@ public class ProfesorResponse {
 
     private Long id;
     private String nombre;
+    private String documento;
     private String correoElectronico;
 
 }
