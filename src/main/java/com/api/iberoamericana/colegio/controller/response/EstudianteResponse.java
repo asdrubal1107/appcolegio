@@ -8,12 +8,10 @@ import lombok.Data;
 public class EstudianteResponse {
 
     private Long id;
-    private String nombre;
-    private String apellido;
-    private String celular;
+    private String nombres;
+    private String documento;
     private String correoElectronico;
     private String nombreAcudiente;
-    private String telefonoAcudiente;
-    private String estadoMatricula;
+    private String grupo;
 
 }

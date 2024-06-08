@@ -69,9 +69,11 @@ public class EstudianteService implements IEstudianteService {
     private EstudianteResponse estudianteToEstudianteResponse(Estudiante estudiante){
         return EstudianteResponse.builder()
                 .id(estudiante.getIdEstudiante())
-                .nombre(estudiante.getUsuario().getNombres())
+                .nombres(estudiante.getUsuario().getNombres())
+                .documento(estudiante.getUsuario().getDocumento())
                 .correoElectronico(estudiante.getUsuario().getCorreoElectronico())
                 .nombreAcudiente(estudiante.getNombreAcudiente())
+                .grupo("PENDIENTE DE RELACIONAR")
                 .build();
     }
 
