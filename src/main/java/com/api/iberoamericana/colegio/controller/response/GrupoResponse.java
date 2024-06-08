@@ -5,10 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CursoResponse {
+public class GrupoResponse {
 
     private Long id;
     private String nombre;
-    private String descripcion;
 
 }

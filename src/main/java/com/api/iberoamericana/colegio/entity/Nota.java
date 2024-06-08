@@ -23,8 +23,4 @@ public class Nota {
     @Column(nullable = false, precision = 3, scale = 2)
     private BigDecimal nota;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_curso_asignado", nullable = false)
-    private CursosAsignados cursoAsignado;
-
 }

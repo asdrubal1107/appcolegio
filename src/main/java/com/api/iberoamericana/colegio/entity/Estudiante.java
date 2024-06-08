@@ -29,7 +29,9 @@ public class Estudiante {
     @JsonBackReference
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "estudiante")
-    private List<CursosAsignados> cursosAsignados;
+    @ManyToOne
+    @JoinColumn(name = "id_grupo", nullable = false)
+    @JsonBackReference
+    private Grupo grupo;
 
 }

@@ -26,7 +26,4 @@ public class Profesor {
     @JsonBackReference
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "profesor")
-    private List<CursosAsignados> cursosAsignados;
-
 }

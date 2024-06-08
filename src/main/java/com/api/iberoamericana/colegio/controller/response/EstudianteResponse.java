@@ -1,5 +1,7 @@
 package com.api.iberoamericana.colegio.controller.response;
 
+import com.api.iberoamericana.colegio.entity.Grupo;
+import com.api.iberoamericana.colegio.entity.Rol;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,7 +14,7 @@ public class EstudianteResponse {
     private String documento;
     private String correoElectronico;
     private String nombreAcudiente;
-    private String grupo;
-    private String rol;
+    private Grupo grupo;
+    private Rol rol;
 
 }
