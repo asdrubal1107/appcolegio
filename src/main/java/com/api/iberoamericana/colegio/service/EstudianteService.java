@@ -1,6 +1,7 @@
 package com.api.iberoamericana.colegio.service;
 
 import com.api.iberoamericana.colegio.controller.response.EstudianteResponse;
+import com.api.iberoamericana.colegio.controller.response.RolResponse;
 import com.api.iberoamericana.colegio.entity.Estudiante;
 import com.api.iberoamericana.colegio.entity.Usuario;
 import com.api.iberoamericana.colegio.exception.NotFoundException;
@@ -74,7 +75,10 @@ public class EstudianteService implements IEstudianteService {
                 .correoElectronico(estudiante.getUsuario().getCorreoElectronico())
                 .nombreAcudiente(estudiante.getNombreAcudiente())
                 .grupo(estudiante.getGrupo())
-                .rol(estudiante.getUsuario().getRol())
+                .rol(RolResponse.builder()
+                        .id(estudiante.getUsuario().getRol().getIdRol())
+                        .nombre(estudiante.getUsuario().getRol().getNombre())
+                        .build())
                 .build();
     }
 

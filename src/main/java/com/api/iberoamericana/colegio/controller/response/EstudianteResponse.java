@@ -15,6 +15,6 @@ public class EstudianteResponse {
     private String correoElectronico;
     private String nombreAcudiente;
     private Grupo grupo;
-    private Rol rol;
+    private RolResponse rol;
 
 }

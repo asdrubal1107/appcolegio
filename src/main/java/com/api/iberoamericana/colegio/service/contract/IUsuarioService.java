@@ -1,5 +1,6 @@
 package com.api.iberoamericana.colegio.service.contract;
 
+import com.api.iberoamericana.colegio.controller.response.LoginResponse;
 import com.api.iberoamericana.colegio.controller.response.UsuarioResponse;
 import com.api.iberoamericana.colegio.entity.Rol;
 import com.api.iberoamericana.colegio.entity.Usuario;
@@ -19,5 +20,7 @@ public interface IUsuarioService {
     String deleteUsuario(long id);
 
     Rol getRolById(long id);
+
+    LoginResponse findByCorreoElectronicoAndPassword(String correoElectronico, String password);
 
 }

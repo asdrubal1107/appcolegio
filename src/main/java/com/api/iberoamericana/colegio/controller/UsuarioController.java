@@ -1,6 +1,7 @@
 package com.api.iberoamericana.colegio.controller;
 
 import com.api.iberoamericana.colegio.controller.request.UsuarioRequest;
+import com.api.iberoamericana.colegio.controller.response.LoginResponse;
 import com.api.iberoamericana.colegio.controller.response.UsuarioResponse;
 import com.api.iberoamericana.colegio.entity.Usuario;
 

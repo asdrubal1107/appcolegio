@@ -1,5 +1,7 @@
 package com.api.iberoamericana.colegio.service;
 
+import com.api.iberoamericana.colegio.controller.response.LoginResponse;
+import com.api.iberoamericana.colegio.controller.response.RolResponse;
 import com.api.iberoamericana.colegio.controller.response.UsuarioResponse;
 import com.api.iberoamericana.colegio.entity.Rol;
 import com.api.iberoamericana.colegio.entity.Usuario;
@@ -61,6 +63,21 @@ public class UsuarioService implements IUsuarioService {
         return rolRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(HttpStatus.NOT_FOUND,
                         "No se encontro el rol con id " + id));
+    }
+
+    @Override
+    public LoginResponse findByCorreoElectronicoAndPassword(String correoElectronico, String password) {
+        Usuario usuario = usuarioRepository
+                .findByCorreoElectronicoAndPassword(correoElectronico, password)
+                .orElseThrow(() -> new NotFoundException(HttpStatus.NOT_FOUND,
+                        "Usuario o contraseña incorrecta"));
+        return LoginResponse.builder()
+                .nombres(usuario.getNombres())
+                .rol(RolResponse.builder()
+                        .id(usuario.getRol().getIdRol())
+                        .nombre(usuario.getRol().getNombre())
+                        .build())
+                .build();
     }
 
     private Usuario obtenerUsuarioPorId(long id){
