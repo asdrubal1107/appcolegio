@@ -68,7 +68,7 @@ public class ProfesorService implements IProfesorService {
     private ProfesorResponse profesorToProfesorResponse(Profesor profesor){
         return ProfesorResponse.builder()
                 .id(profesor.getIdProfesor())
-                .nombre(profesor.getUsuario().getNombres())
+                .nombres(profesor.getUsuario().getNombres())
                 .correoElectronico(profesor.getUsuario().getCorreoElectronico())
                 .rol(profesor.getUsuario().getRol().getNombre())
                 .build();
