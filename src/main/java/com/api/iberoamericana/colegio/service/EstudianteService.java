@@ -74,6 +74,7 @@ public class EstudianteService implements IEstudianteService {
                 .correoElectronico(estudiante.getUsuario().getCorreoElectronico())
                 .nombreAcudiente(estudiante.getNombreAcudiente())
                 .grupo("PENDIENTE DE RELACIONAR")
+                .rol(estudiante.getUsuario().getRol().getNombre())
                 .build();
     }
 

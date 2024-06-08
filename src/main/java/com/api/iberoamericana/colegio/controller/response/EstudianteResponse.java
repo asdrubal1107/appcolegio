@@ -13,5 +13,6 @@ public class EstudianteResponse {
     private String correoElectronico;
     private String nombreAcudiente;
     private String grupo;
+    private String rol;
 
 }

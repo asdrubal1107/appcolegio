@@ -70,6 +70,7 @@ public class ProfesorService implements IProfesorService {
                 .id(profesor.getIdProfesor())
                 .nombre(profesor.getUsuario().getNombres())
                 .correoElectronico(profesor.getUsuario().getCorreoElectronico())
+                .rol(profesor.getUsuario().getRol().getNombre())
                 .build();
     }
 
