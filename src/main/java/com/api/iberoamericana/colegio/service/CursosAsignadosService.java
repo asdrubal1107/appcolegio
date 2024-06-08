@@ -98,10 +98,8 @@ public class CursosAsignadosService implements ICursosAsignadosService {
                 .fechaAsignacion(cursoAsignado.getFechaAsignacion())
                 .promedio(cursoAsignado.getPromedio())
                 .curso(cursoAsignado.getCurso().getNombre())
-                .estudiante(cursoAsignado.getEstudiante().getUsuario().getNombres() + " "
-                        + cursoAsignado.getEstudiante().getUsuario().getApellidos())
-                .profesor(cursoAsignado.getProfesor().getUsuario().getNombres() + " "
-                        + cursoAsignado.getProfesor().getUsuario().getApellidos())
+                .estudiante(cursoAsignado.getEstudiante().getUsuario().getNombres())
+                .profesor(cursoAsignado.getProfesor().getUsuario().getNombres())
                 .build();
     }
 

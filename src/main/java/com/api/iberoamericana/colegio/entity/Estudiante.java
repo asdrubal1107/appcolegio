@@ -24,12 +24,6 @@ public class Estudiante {
     @Column(length = 100)
     private String nombreAcudiente;
 
-    @Column(length = 20)
-    private String telefonoAcudiente;
-
-    @Column(nullable = false, columnDefinition = "TINYINT")
-    private Boolean estadoMatricula;
-
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     @JsonBackReference

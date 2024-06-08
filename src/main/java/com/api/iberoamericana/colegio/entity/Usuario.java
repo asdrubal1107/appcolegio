@@ -26,26 +26,14 @@ public class Usuario {
     @Column(length = 20, nullable = false, unique = true)
     private String documento;
 
-    @Column(length = 50)
+    @Column(length = 100, nullable = false)
     private String nombres;
 
-    @Column(length = 50)
-    private String apellidos;
-
-    @Column
-    private String fechaNacimiento;
-
-    @Column(length = 100)
-    private String direccion;
-
-    @Column(length = 20)
-    private String celular;
-
-    @Column(length = 100)
+    @Column(length = 100, nullable = false, unique = true)
     private String correoElectronico;
 
-    @Column(nullable = false, columnDefinition = "TINYINT")
-    private Boolean estado;
+    @Column(length = 50, nullable = false)
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)

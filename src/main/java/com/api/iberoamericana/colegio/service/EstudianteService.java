@@ -35,7 +35,6 @@ public class EstudianteService implements IEstudianteService {
 
     @Override
     public EstudianteResponse createEstudiante(Estudiante estudiante) {
-        estudiante.setEstadoMatricula(Boolean.TRUE);
         return estudianteToEstudianteResponse(estudianteRepository.save(estudiante));
     }
 
@@ -43,7 +42,6 @@ public class EstudianteService implements IEstudianteService {
     public EstudianteResponse updateEstudiante(Estudiante estudiante, long id) {
         Estudiante estudianteUpdate = obtenerEstudiantePorId(id);
         estudianteUpdate.setNombreAcudiente(estudiante.getNombreAcudiente());
-        estudianteUpdate.setTelefonoAcudiente(estudiante.getTelefonoAcudiente());
         estudianteUpdate.setUsuario(estudiante.getUsuario());
         return estudianteToEstudianteResponse(estudianteRepository.save(estudianteUpdate));
     }
@@ -72,12 +70,8 @@ public class EstudianteService implements IEstudianteService {
         return EstudianteResponse.builder()
                 .id(estudiante.getIdEstudiante())
                 .nombre(estudiante.getUsuario().getNombres())
-                .apellido(estudiante.getUsuario().getApellidos())
-                .celular(estudiante.getUsuario().getCelular())
                 .correoElectronico(estudiante.getUsuario().getCorreoElectronico())
                 .nombreAcudiente(estudiante.getNombreAcudiente())
-                .telefonoAcudiente(estudiante.getTelefonoAcudiente())
-                .estadoMatricula(estudiante.getEstadoMatricula() ? "Matriculado" : "Sin matricular")
                 .build();
     }
 
