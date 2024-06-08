@@ -1,11 +1,8 @@
 package com.api.iberoamericana.colegio.controller;
 
 import com.api.iberoamericana.colegio.controller.request.EstudianteRequest;
-import com.api.iberoamericana.colegio.controller.request.ProfesorRequest;
 import com.api.iberoamericana.colegio.controller.response.EstudianteResponse;
-import com.api.iberoamericana.colegio.controller.response.ProfesorResponse;
 import com.api.iberoamericana.colegio.entity.Estudiante;
-import com.api.iberoamericana.colegio.entity.Profesor;
 import com.api.iberoamericana.colegio.service.EstudianteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -54,7 +51,6 @@ public class EstudianteController {
     private Estudiante estudianteRequestToEstudiante(EstudianteRequest estudianteRequest) {
         return Estudiante.builder()
                 .nombreAcudiente(estudianteRequest.getNombreAcudiente())
-                .telefonoAcudiente(estudianteRequest.getTelefonoAcudiente())
                 .usuario(estudianteService.getUsuarioById(Long.parseLong(estudianteRequest.getIdUsuario())))
                 .build();
     }

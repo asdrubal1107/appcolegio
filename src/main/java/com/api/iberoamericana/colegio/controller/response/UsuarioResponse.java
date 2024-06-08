@@ -12,12 +12,8 @@ public class UsuarioResponse {
     private Long id;
     private String documento;
     private String nombres;
-    private String apellidos;
-    private String fechaNacimiento;
-    private String direccion;
-    private String celular;
     private String correoElectronico;
-    private String estado;
+    private String password;
     private String rol;
 
 }

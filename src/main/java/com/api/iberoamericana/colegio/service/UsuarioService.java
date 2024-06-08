@@ -35,7 +35,6 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public UsuarioResponse createUsuario(Usuario usuario) {
-        usuario.setEstado(Boolean.TRUE);
         return usuarioToUsuarioResponse(usuarioRepository.save(usuario));
     }
 
@@ -44,11 +43,8 @@ public class UsuarioService implements IUsuarioService {
         Usuario usuarioUpdate = obtenerUsuarioPorId(id);
         usuarioUpdate.setDocumento(usuario.getDocumento());
         usuarioUpdate.setNombres(usuario.getNombres());
-        usuarioUpdate.setApellidos(usuario.getApellidos());
-        usuarioUpdate.setFechaNacimiento(usuario.getFechaNacimiento());
-        usuarioUpdate.setDireccion(usuario.getDireccion());
-        usuarioUpdate.setCelular(usuario.getCelular());
         usuarioUpdate.setCorreoElectronico(usuario.getCorreoElectronico());
+        usuarioUpdate.setPassword(usuario.getPassword());
         usuarioUpdate.setRol(usuario.getRol());
         return usuarioToUsuarioResponse(usuarioRepository.save(usuarioUpdate));
     }
@@ -79,12 +75,8 @@ public class UsuarioService implements IUsuarioService {
                 .id(usuario.getIdUsuario())
                 .documento(usuario.getDocumento())
                 .nombres(usuario.getNombres())
-                .apellidos(usuario.getApellidos())
-                .fechaNacimiento(usuario.getFechaNacimiento())
-                .direccion(usuario.getDireccion())
-                .celular(usuario.getCelular())
                 .correoElectronico(usuario.getCorreoElectronico())
-                .estado(usuario.getEstado() ? "Activo" : "Inactivo")
+                .password(usuario.getPassword())
                 .rol(usuario.getRol().getNombre())
                 .build();
     }
