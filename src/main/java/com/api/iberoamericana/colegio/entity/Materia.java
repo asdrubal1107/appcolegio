@@ -1,6 +1,5 @@
 package com.api.iberoamericana.colegio.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,22 +11,20 @@ import java.util.List;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "profesores")
-public class Profesor {
+@Table(name = "materias")
+public class Materia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProfesor;
+    private Long idMateria;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario", nullable = false, unique = true)
-    @JsonBackReference
-    private Usuario usuario;
+    @Column(nullable = false, length = 50)
+    private String nombre;
 
-    @OneToMany(mappedBy = "profesor")
+    @OneToMany(mappedBy = "materia")
     @JsonManagedReference
     private List<MateriasProfesor> materiasProfesor;
 

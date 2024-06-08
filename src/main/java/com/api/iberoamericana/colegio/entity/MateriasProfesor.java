@@ -11,30 +11,27 @@ import java.util.List;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "estudiantes")
-public class Estudiante {
+@Table(name = "materias_profesor")
+public class MateriasProfesor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEstudiante;
-
-    @Column(length = 100)
-    private String nombreAcudiente;
+    private Long idMateriaProfesor;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @JoinColumn(name = "id_profesor", nullable = false)
     @JsonBackReference
-    private Usuario usuario;
+    private Profesor profesor;
 
     @ManyToOne
-    @JoinColumn(name = "id_grupo", nullable = false)
+    @JoinColumn(name = "id_materia", nullable = false)
     @JsonBackReference
-    private Grupo grupo;
+    private Materia materia;
 
-    @OneToMany(mappedBy = "estudiante")
+    @OneToMany(mappedBy = "materiaProfesor")
     private List<MatriculaEstudiante> matriculaEstudiantes;
 
 }

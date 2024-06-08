@@ -1,5 +1,6 @@
 package com.api.iberoamericana.colegio.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,5 +23,10 @@ public class Nota {
 
     @Column(nullable = false, precision = 3, scale = 2)
     private BigDecimal nota;
+
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "id_matricula_estudiante")
+    @JsonBackReference
+    private MatriculaEstudiante matriculaEstudiante;
 
 }
