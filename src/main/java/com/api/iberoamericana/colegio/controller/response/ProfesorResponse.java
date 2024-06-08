@@ -11,6 +11,7 @@ public class ProfesorResponse {
     private String nombres;
     private String documento;
     private String correoElectronico;
-    private String rol;
+    private String contrasena;
+    private RolResponse rol;
 
 }

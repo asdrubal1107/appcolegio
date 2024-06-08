@@ -1,6 +1,7 @@
 package com.api.iberoamericana.colegio.service;
 
 import com.api.iberoamericana.colegio.controller.response.ProfesorResponse;
+import com.api.iberoamericana.colegio.controller.response.RolResponse;
 import com.api.iberoamericana.colegio.entity.Profesor;
 import com.api.iberoamericana.colegio.entity.Usuario;
 import com.api.iberoamericana.colegio.exception.NotFoundException;
@@ -69,8 +70,13 @@ public class ProfesorService implements IProfesorService {
         return ProfesorResponse.builder()
                 .id(profesor.getIdProfesor())
                 .nombres(profesor.getUsuario().getNombres())
+                .documento(profesor.getUsuario().getDocumento())
                 .correoElectronico(profesor.getUsuario().getCorreoElectronico())
-                .rol(profesor.getUsuario().getRol().getNombre())
+                .contrasena(profesor.getUsuario().getPassword())
+                .rol(RolResponse.builder()
+                        .id(profesor.getUsuario().getRol().getIdRol())
+                        .nombre(profesor.getUsuario().getRol().getNombre())
+                        .build())
                 .build();
     }
 

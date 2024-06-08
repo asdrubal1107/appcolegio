@@ -4,10 +4,7 @@ import com.api.iberoamericana.colegio.controller.response.ProfesorResponse;
 import com.api.iberoamericana.colegio.service.ProfesorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,11 @@ public class ProfesorController {
     @GetMapping
     public ResponseEntity<List<ProfesorResponse>> findAll(){
         return ResponseEntity.ok(profesorService.getProfesores());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProfesorResponse> findById(@PathVariable String id){
+        return ResponseEntity.ok(profesorService.getProfesor(Long.parseLong(id)));
     }
 
 }
