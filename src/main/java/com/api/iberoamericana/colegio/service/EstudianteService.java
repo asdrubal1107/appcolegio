@@ -73,7 +73,9 @@ public class EstudianteService implements IEstudianteService {
     @Override
     public String deleteEstudiante(long id) {
         Estudiante estudianteDelete = obtenerEstudiantePorId(id);
+        Long idUsuario = estudianteDelete.getUsuario().getIdUsuario();
         estudianteRepository.delete(estudianteDelete);
+        usuarioRepository.deleteById(idUsuario);
         return "Se elimino el estudiante con id " + id;
     }
 
