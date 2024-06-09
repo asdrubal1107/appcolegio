@@ -1,5 +1,6 @@
 package com.api.iberoamericana.colegio.service.contract;
 
+import com.api.iberoamericana.colegio.controller.request.EstudianteRequest;
 import com.api.iberoamericana.colegio.controller.response.EstudianteResponse;
 import com.api.iberoamericana.colegio.entity.Estudiante;
 import com.api.iberoamericana.colegio.entity.Usuario;
@@ -12,9 +13,9 @@ public interface IEstudianteService {
 
     EstudianteResponse getEstudiante(long id);
 
-    EstudianteResponse createEstudiante(Estudiante estudiante);
+    EstudianteResponse createEstudiante(EstudianteRequest estudiante);
 
-    EstudianteResponse updateEstudiante(Estudiante estudiante, long id);
+    EstudianteResponse updateEstudiante(EstudianteRequest estudiante, long id);
 
     String deleteEstudiante(long id);
 

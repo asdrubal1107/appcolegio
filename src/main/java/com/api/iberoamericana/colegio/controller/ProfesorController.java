@@ -1,5 +1,6 @@
 package com.api.iberoamericana.colegio.controller;
 
+import com.api.iberoamericana.colegio.controller.request.ProfesorRequest;
 import com.api.iberoamericana.colegio.controller.response.ProfesorResponse;
 import com.api.iberoamericana.colegio.service.ProfesorService;
 import lombok.RequiredArgsConstructor;

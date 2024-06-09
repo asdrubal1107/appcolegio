@@ -15,7 +15,7 @@ public class EstudianteResponse {
     private String correoElectronico;
     private String nombreAcudiente;
     private String contrasena;
-    private Grupo grupo;
+    private GrupoResponse grupo;
     private RolResponse rol;
 
 }

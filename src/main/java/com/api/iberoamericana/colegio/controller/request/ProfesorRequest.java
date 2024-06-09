@@ -3,16 +3,12 @@ package com.api.iberoamericana.colegio.controller.request;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class EstudianteRequest {
+public class ProfesorRequest {
 
     @NotNull
     @Size(min = 1, max = 20)
@@ -33,12 +29,5 @@ public class EstudianteRequest {
 
     @NotNull
     private String idRol;
-
-    @NotNull
-    @Size(min = 1, max = 100)
-    private String nombreAcudiente;
-
-    @NotNull
-    private String idGrupo;
 
 }
